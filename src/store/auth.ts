@@ -4,32 +4,23 @@ import { deleteCookie, setCookie } from 'cookies-next'
 import dayjs from 'dayjs'
 import { create } from 'zustand'
 import { logger } from './log'
+import { ProfileItem } from '@/services/auth/auth.type'
 
 type LoginData = {
-  user: User
   token: string
   remember?: boolean
   redirectUri?: string
 }
 
 type UseAuth = {
-  user: null | User
+  user: null | ProfileItem
   loading: boolean
   token: string | null
 
   login: (data: LoginData) => void
+  setUser: (user: ProfileItem, remember?: boolean) => void
   logout: (data?: { redirectUri?: string }) => void
   setLoading: (value: boolean) => void
-}
-
-type User = {
-  username: string
-  email: string
-  firstName: string
-  lastName: string
-  gender: string
-  image: string
-  permission: string[]
 }
 
 const initialState = {
@@ -50,13 +41,21 @@ export const useAuth = create<UseAuth>()(
   logger(
     (set) => ({
       ...initialState,
-      login: ({ token, redirectUri, remember, user }) => {
+      login: ({ token, redirectUri, remember }) => {
         //set token to cookie
         setAuthCookie(
           AUTH_KEY.AUTH_CREDENTIAL,
           token,
           remember ? AUTH_KEY.AUTH_CREDENTIAL_EXPIRE : undefined
         )
+        set({ loading: false, token: token, user: null })
+
+        //redirect path
+        if (redirectUri) {
+          window.location.href = redirectUri
+        }
+      },
+      setUser: (user, remember) => {
         //set user to cookie
         setAuthCookie(
           AUTH_KEY.USER_CREDENTIAL,
@@ -65,12 +64,7 @@ export const useAuth = create<UseAuth>()(
         )
 
         // set token and user to store (zustand)
-        set({ user: user, loading: false, token: token })
-
-        //redirect path
-        if (redirectUri) {
-          window.location.href = redirectUri
-        }
+        set({ user: user, loading: false })
       },
       logout: ({ redirectUri } = {}) => {
         set({ user: null, token: null })

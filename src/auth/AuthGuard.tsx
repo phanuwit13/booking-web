@@ -5,6 +5,7 @@ import { getCookie } from 'cookies-next'
 import { usePathname, useRouter } from 'next/navigation'
 import { ReactElement, ReactNode, useEffect } from 'react'
 import { useAuth } from '../store/auth'
+import { ROUTE } from '@/constants/routes'
 
 interface AuthGuardProps {
   children: ReactNode
@@ -24,10 +25,10 @@ const AuthGuard = (props: AuthGuardProps) => {
       }
 
       if (!getCookie(AUTH_KEY.AUTH_CREDENTIAL) || !getCookie(AUTH_KEY.USER_CREDENTIAL)) {
-        if (pathName !== '/') {
-          router.replace('/login')
+        if (pathName !== ROUTE.HOME) {
+          router.replace(ROUTE.LOGIN)
         } else {
-          router.replace('/login')
+          router.replace(ROUTE.LOGIN)
         }
       }
     },

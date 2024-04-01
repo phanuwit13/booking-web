@@ -9,3 +9,9 @@ type Permission = {
 type RolePermission = {
   [x: string]: Permission
 }
+
+type ApiResponse = {
+  success: boolean
+  statusCode: number
+  message: string
+}

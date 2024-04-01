@@ -73,7 +73,7 @@ const REVIEW_LIST = [
 
 const Reviews = (props: Props) => {
   return (
-    <div className='pt-[63px] w-full max-w-[1440px] m-auto pb-[74px]'>
+    <div className='pt-[63px] w-full max-w-[1440px] m-auto pb-[74px] px-4'>
       <h1 className='text-center text-[40px]'>Client Reviews</h1>
       <h2 className='text-center mt-3 text-[14px] max-w-[445px] m-auto'>
         We are very proud of the services we offer to our customers. Read every

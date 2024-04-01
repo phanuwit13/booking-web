@@ -23,12 +23,12 @@ const apiClient = axios.create({
 // Axios middleware to convert all api responses to camelCase
 apiClient.interceptors.response.use(
   function (response) {
-    if (
-      response.data &&
-      response.headers['content-type'] === 'application/json'
-    ) {
-      response.data = camelizeKeys(response.data)
-    }
+    // if (
+    //   response.data &&
+    //   response.headers['content-type'] === 'application/json'
+    // ) {
+    //   response.data = camelizeKeys(response.data)
+    // }
 
     return response
   },
@@ -57,13 +57,13 @@ apiClient.interceptors.request.use(
     if (newConfig.headers['Content-Type'] === 'multipart/form-data')
       return newConfig
 
-    if (config.params) {
-      newConfig.params = decamelizeKeys(config.params)
-    }
+    // if (config.params) {
+    //   newConfig.params = decamelizeKeys(config.params)
+    // }
 
-    if (config.data) {
-      newConfig.data = decamelizeKeys(config.data)
-    }
+    // if (config.data) {
+    //   newConfig.data = decamelizeKeys(config.data)
+    // }
 
     return newConfig
   }

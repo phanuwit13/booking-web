@@ -1,8 +1,8 @@
 export const ROUTE = {
   HOME: '/',
   LOGIN: '/login',
+  PROFILE: '/profile',
   ROOMS: '/rooms',
   EXPLORE: '/explore',
-  ABOUT: '/about',
-  CONTACT: '/contact',
+  REGISTER: '/register',
 }

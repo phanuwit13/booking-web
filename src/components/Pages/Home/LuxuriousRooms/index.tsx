@@ -15,7 +15,7 @@ const LuxuriousRooms = (props: Props) => {
         <h2 className='text-center mt-4 text-[12px] text-white'>
           All room are design for your comfort
         </h2>
-        <ul className='grid grid-cols-3 gap-[58px] px-[120px] mt-[70px]'>
+        <ul className='grid lg:grid-cols-3 gap-[58px] px-10 sm:px-[120px] mt-[70px]'>
           {Array.from(Array(3)).map((_, index) => {
             return (
               <li className='bg-white p-7 rounded' key={index}>

@@ -1,6 +1,10 @@
 'use client'
 
 import { useFormLogin } from '@/components/Pages/Login/FormLogin/FormLogin.hook'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { ROUTE } from '@/constants/routes'
+import Link from 'next/link'
 
 interface Props {}
 
@@ -8,9 +12,9 @@ const FormLogin = (props: Props) => {
   const { form, handleSubmit } = useFormLogin()
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
+    <form onSubmit={handleSubmit} className='flex flex-col gap-6 w-full px-10'>
       <fieldset>
-        <input
+        <Input
           type='text'
           placeholder='Username'
           className='border px-2 py-1 w-full'
@@ -23,7 +27,7 @@ const FormLogin = (props: Props) => {
         )}
       </fieldset>
       <fieldset>
-        <input
+        <Input
           type='password'
           placeholder='Password'
           className='border px-2 py-1 w-full'
@@ -35,9 +39,12 @@ const FormLogin = (props: Props) => {
           </p>
         )}
       </fieldset>
-      <button type='submit' className='border py-1 bg-green-500 text-white'>
+      <Button type='submit' size='lg'>
         Login
-      </button>
+      </Button>
+      <div className='flex justify-end -mt-4'>
+        <Link href={ROUTE.REGISTER} className='text-cerulean-blue-500'>Register Now</Link>
+      </div>
     </form>
   )
 }

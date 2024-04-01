@@ -61,12 +61,12 @@ const OUR_FACILITIES = [
 
 const OurFacilities = (props: Props) => {
   return (
-    <div className='pt-[140px] w-full max-w-[1440px] m-auto pb-[74px]'>
+    <div className='pt-[140px] w-full max-w-[1440px] m-auto pb-[74px] px-4'>
       <h1 className='text-center text-[40px]'>Our Facilities</h1>
       <h2 className='text-center mt-3'>
         We offer modern (5 star) hotel facilities for your comfort.
       </h2>
-      <ul className='grid grid-cols-4 gap-x-[50px] gap-y-[60px] mt-[50px]'>
+      <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-[50px] gap-y-[60px] mt-[50px]'>
         {OUR_FACILITIES.map((item) => {
           return (
             <li

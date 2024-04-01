@@ -3,13 +3,14 @@
 import AuthGuard from '@/auth/AuthGuard'
 import AuthProvider from '@/auth/AuthProvider'
 import GuestGuard from '@/auth/GuestGuard'
+import { AlertMessageModal } from '@/components/Modal/AlertMessageModal'
+import BackdropLoading from '@/components/Modal/BackdropLoading'
 import SpinnerPage from '@/components/SpinnerPage'
 import { ROUTE_PERMISSION } from '@/constants/permission'
 import { urlMatch } from '@/lib/route'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { usePathname } from 'next/navigation'
 import { ReactNode, useMemo } from 'react'
-import PermissionProvider from './permissionProvider'
 
 interface ProviderProps {
   children: ReactNode
@@ -50,12 +51,10 @@ export default function Providers({ children }: ProviderProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider checkAuth={permission.guard === 'Auth'}>
-        <Guard guard={permission.guard}>
-          <PermissionProvider permission={permission.permission}>
-            {children}
-          </PermissionProvider>
-        </Guard>
+        <Guard guard={permission.guard}>{children}</Guard>
       </AuthProvider>
+      <AlertMessageModal />
+      <BackdropLoading />
     </QueryClientProvider>
   )
 }

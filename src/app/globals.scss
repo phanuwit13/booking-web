@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* swiper */
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 14px !important;
+  background: #ffffff !important;
+  opacity: 1 !important;
+  margin-inline: 4px !important;
+}
+.swiper-pagination-bullet-active {
+  @apply bg-cerulean-blue-600;
+}
+
+.swiper-pagination {
+  @apply bottom-[80px];
+}
+
+/* calendar style */
+.fc .fc-monthSelection-button.fc-button.fc-button-primary {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:border-input bg-background text-cerulean-blue-500 shadow-sm hover:bg-accent hover:text-cerulean-blue-400 active:focus:shadow-none;
+}
+.fc .fc-toolbar-title {
+  @apply text-[16px] font-semibold;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  @apply mb-4 px-2;
+}
+.fc-theme-standard th {
+  @apply border-none;
+}
+.fc-theme-standard td {
+  @apply border-2 border-white;
+}
+
+table.fc-scrollgrid.fc-scrollgrid-liquid {
+  @apply border-none;
+}
+.fc .fc-daygrid-day-top {
+  @apply justify-center;
+}
+.fc .fc-daygrid-day.fc-day-today {
+  // @apply bg-white outline outline-2 -outline-offset-1 outline-green-400;
+  @apply bg-white;
+}
+.fc-scroller .fc-scroller-liquid-absolute {
+  overflow: hidden;
+}
+.fc-daygrid-day-number {
+  @apply w-full h-full hover:no-underline;
+}
+
+.fc-daygrid-day-number:hover {
+  text-decoration: none !important;
+}
+
+.fc-prev-button,
+.fc-next-button {
+  @apply bg-white border border-cerulean-blue-500 text-cerulean-blue-500 text-xs py-1 focus:shadow-none  #{!important};
+}
+
+.fc .fc-day-other .fc-daygrid-day-top{
+  @apply relative z-10 #{!important};
+}
